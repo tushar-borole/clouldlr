@@ -4,13 +4,21 @@ import { Switch, Route } from 'react-router';
 import routes from './constants/routes';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
-import CounterPage from './containers/CounterPage';
 
 export default () => (
   <App>
-    <Switch>
-      <Route path={routes.COUNTER} component={CounterPage} />
-      <Route path={routes.HOME} component={HomePage} />
-    </Switch>
+    <div className="window">
+      <header className="toolbar toolbar-header">
+        <h1 className="title">Photons</h1>
+      </header>
+      <div className='window-content'>
+        <Switch>
+            <Route path={routes.HOME} component={HomePage} />
+        </Switch>
+      </div>
+    </div>
+    <footer className="toolbar toolbar-footer">
+      <h1 className="title">Footer</h1>
+    </footer>
   </App>
 );
