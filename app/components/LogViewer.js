@@ -13,32 +13,21 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   }
 });
-
-class SideBar extends Component {
-  componentWillMount() {
-    const { fetchLogGroups } = this.props;
-    fetchLogGroups();
-  }
-
-  componentDidUpdate() {
-    console.log(this.props);
-  }
-
+class LogViewer extends Component {
   render() {
     const { logs, classes } = this.props;
-    console.log(logs);
     return (
-      <div className="pane-sm sidebar">
+      <div>
         <List>
           {logs.map(value => (
             <ListItem
-              key={value.logGroupName}
+              key={value.eventId}
               role={undefined}
               dense
               button
               className={classes.listItem}
             >
-              <ListItemText primary={value.logGroupName} />
+              <ListItemText primary={value.message} />
             </ListItem>
           ))}
         </List>
@@ -47,8 +36,8 @@ class SideBar extends Component {
   }
 }
 
-SideBar.propTypes = {
+LogViewer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SideBar);
+export default withStyles(styles)(LogViewer);
