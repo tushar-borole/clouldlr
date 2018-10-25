@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import TabsContainer from '../containers/TabsContainer';
 
 const styles = theme => ({
   root: {
@@ -18,6 +19,7 @@ class LogViewer extends Component {
     const { logs, classes } = this.props;
     return (
       <div>
+        <TabsContainer/>
         <List>
           {logs.map(value => (
             <ListItem

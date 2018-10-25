@@ -15,13 +15,29 @@ const styles = theme => ({
 });
 
 class SideBar extends Component {
+  state = {
+    checked: [1],
+  };
+
+  handleToggle = value => () => {
+    const { checked } = this.state;
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    this.setState({
+      checked: newChecked,
+    });
+  };
+
   componentWillMount() {
     const { fetchLogGroups } = this.props;
     fetchLogGroups();
-  }
-
-  componentDidUpdate() {
-    console.log(this.props);
   }
 
   render() {
