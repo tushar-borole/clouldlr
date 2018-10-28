@@ -1,12 +1,12 @@
 // @flow
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import sidebarReducer from './sidebarReducer';
-import logviewReducer from './logviewReducer';
+import sideBarReducer from '../features/SideBar/SideBarReducer';
+import logViewReducer from '../features/LogView/LogViewReducer';
 
 const reducers = {
-  sidebarReducer,
-  logviewReducer
+  sidebarReducer: sideBarReducer,
+  logviewReducer: logViewReducer
 };
 
 export default function createRootReducer(history: {}) {

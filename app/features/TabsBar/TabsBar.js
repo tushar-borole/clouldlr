@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import withStyles from '@material-ui/core/styles/withStyles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-});
+import styles from './TabsBar.scss'
 
 class TabsBar extends Component {
   state = {
@@ -22,11 +14,10 @@ class TabsBar extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { value } = this.state;
 
     return (
-      <div className={classes.root}>
+      <div className={styles.TabsBar}>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Item One" />
@@ -39,8 +30,4 @@ class TabsBar extends Component {
   }
 }
 
-TabsBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(TabsBar);
+export default TabsBar;

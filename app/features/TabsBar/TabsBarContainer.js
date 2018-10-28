@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TabsBar from '../components/TabsBar';
+import TabsBar from './TabsBar';
 
 function mapStateToProps(state) {
   const logs ="test";

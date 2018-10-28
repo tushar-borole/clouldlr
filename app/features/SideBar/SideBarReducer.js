@@ -4,9 +4,9 @@ import {
   RECEIVE_LOG_GROUPS,
   RECEIVE_LOG_GROUPS_FAIL,
   REQUEST_LOG_GROUPS
-} from '../constants/sidebarConstant';
+} from './SideBarConstant';
 
-const sidebarReducer = handleActions(
+const sideBarReducer = handleActions(
   {
     [RECEIVE_LOG_GROUPS]: (state, action) => ({
       ...state,
@@ -25,4 +25,4 @@ const sidebarReducer = handleActions(
   {}
 );
 
-export default sidebarReducer;
+export default sideBarReducer;

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import LogView from '../components/LogView';
-import { fetchLogEvents } from '../actions/logviewAction';
-import { selectLogEvents } from '../selectors/logviewSelector';
+import LogView from './LogView';
+import { fetchLogEvents } from './LogViewAction';
+import { selectLogEvents } from './LogViewSelector';
 
 function mapStateToProps(state) {
   const logs = selectLogEvents(state);

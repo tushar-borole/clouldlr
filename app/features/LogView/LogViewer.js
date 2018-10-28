@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import TabsContainer from '../TabsBar/TabsBarContainer';
 
 const styles = theme => ({
   root: {
@@ -13,48 +14,22 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   }
 });
-
-class SideBar extends Component {
-  state = {
-    checked: [1],
-  };
-
-  handleToggle = value => () => {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    this.setState({
-      checked: newChecked,
-    });
-  };
-
-  componentWillMount() {
-    const { fetchLogGroups } = this.props;
-    fetchLogGroups();
-  }
-
+class LogViewer extends Component {
   render() {
     const { logs, classes } = this.props;
-    console.log(logs);
     return (
-      <div className="pane-sm sidebar">
+      <div>
+        <TabsContainer/>
         <List>
           {logs.map(value => (
             <ListItem
-              key={value.logGroupName}
+              key={value.eventId}
               role={undefined}
               dense
               button
               className={classes.listItem}
             >
-              <ListItemText primary={value.logGroupName} />
+              <ListItemText primary={value.message} />
             </ListItem>
           ))}
         </List>
@@ -63,8 +38,8 @@ class SideBar extends Component {
   }
 }
 
-SideBar.propTypes = {
+LogViewer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SideBar);
+export default withStyles(styles)(LogViewer);

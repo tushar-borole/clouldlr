@@ -12,7 +12,7 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { history } from '../store/configureStore';
+import { history } from '../../store/configureStore';
 
 const os = require('os');
 const storage = require('electron-json-storage');
@@ -57,13 +57,13 @@ class SignIn extends Component {
     storage.get('credentials', (error, data) => {
       if (error) throw error;
 
-      console.log(data);
+      this.props.history.push('/home');
     });
   }
 
   saveCrendentials() {
     console.log(this.props);
-    this.props.history.push('/home');
+
     storage.set(
       'credentials',
       { accessKey: this.accesskey.value, secretkey: this.secretkey.value },

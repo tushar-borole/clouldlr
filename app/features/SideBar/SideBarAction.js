@@ -5,7 +5,7 @@ import {
   RECEIVE_LOG_GROUPS,
   RECEIVE_LOG_GROUPS_FAIL,
   REQUEST_LOG_GROUPS
-} from '../constants/sidebarConstant';
+} from './SideBarConstant';
 
 const os = require('os');
 const storage = require('electron-json-storage');

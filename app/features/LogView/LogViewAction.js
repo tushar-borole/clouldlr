@@ -5,7 +5,7 @@ import {
   RECEIVE_LOG_EVENTS,
   RECEIVE_LOG_EVENTS_FAIL,
   REQUEST_LOG_EVENTS
-} from '../constants/logviewConstant';
+} from './LogViewConstant';
 
 const os = require('os');
 const storage = require('electron-json-storage');

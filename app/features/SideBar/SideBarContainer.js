@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import SideBar from '../components/SideBar';
-import { fetchLogGroups } from '../actions/sidebarAction';
-import { selectLogGroups } from '../selectors/sidebarSelector';
+import SideBar from './SideBar';
+import { fetchLogGroups } from './SideBarAction';
+import { selectLogGroups } from './SideBarSelector';
 
 function mapStateToProps(state) {
   const logs = selectLogGroups(state);

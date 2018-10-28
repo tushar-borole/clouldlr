@@ -1,0 +1,15 @@
+.Home{
+  display: flex;
+
+  .content{
+    flex-grow: 1;
+    height: 100vh;
+    overflow: auto
+  }
+  .drawerpaper{
+    position: relative;
+    white-space: nowrap;
+    width: 240px;
+    height: 100vh;
+  }
+}
