@@ -16,10 +16,11 @@ export const requestLogEvents = createAction(REQUEST_LOG_EVENTS);
 export const receiveLogEvents = createAction(RECEIVE_LOG_EVENTS);
 export const receiveLogEventsFail = createAction(RECEIVE_LOG_EVENTS_FAIL);
 
-export const fetchLogEvents = () => (dispatch, getState) => {
+export const fetchLogEvents = (active) => (dispatch, getState) => {
+  console.log("in fetch event")
   dispatch(requestLogEvents());
   const params = {
-    logGroupName: '/aws/codebuild/kqed-pipeline-api-image' /* required */,
+    logGroupName: active /* required */,
     interleaved: true || false,
     limit: 50
   };

@@ -2,14 +2,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import App from './config/App';
-import Home from './features/Home/Home';
+import HomeContainer from './features/Home/HomeContainer';
 import SignIn from './features/SignIn/SignIn';
 
 export default () => (
   <App>
     <Switch>
       <Route exact path="/" component={SignIn} />
-      <Route exact path="/home" component={Home} />
+      <Route exact path="/home" component={HomeContainer} />
     </Switch>
   </App>
 );

@@ -11,12 +11,14 @@ class TabsBar extends Component {
   };
 
   handleChange = (event, value) => {
+    const { selectTab , selectedLogGroups  } = this.props
+    selectTab(selectedLogGroups[value])
     this.setState({ value });
   };
 
   render() {
     const { value } = this.state;
-    const { selectedLogGroups } = this.props
+    const { selectedLogGroups  } = this.props
     console.log(selectedLogGroups)
     return (
       <div className={styles.TabsBar}>
@@ -33,7 +35,8 @@ class TabsBar extends Component {
 }
 
 TabsBar.propTypes = {
-  selectedLogGroups: PropTypes.func.isRequired
+  selectedLogGroups: PropTypes.array.isRequired,
+  selectTab: PropTypes.func.isRequired
 };
 
 export default TabsBar;

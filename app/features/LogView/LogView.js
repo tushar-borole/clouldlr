@@ -1,30 +1,43 @@
 // @flow
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import LogViewer from './LogViewer';
+import List from '@material-ui/core/List/List';
+import ListItem from '@material-ui/core/ListItem/ListItem';
+import ListItemText from '@material-ui/core/ListItemText/ListItemText';
+import TabsContainer from '../TabsBar/TabsBarContainer';
 
-type Props = {
-  fetchLogEvents: () => void
-};
 
-export default class LogView extends Component<Props> {
-  props: Props;
-
+class LogView extends Component {
   componentWillMount() {
     const { fetchLogEvents } = this.props;
     fetchLogEvents();
   }
 
   componentDidUpdate() {
-    console.log(this.props);
+    const { fetchLogEvents } = this.props;
+    // fetchLogEvents()
   }
 
   render() {
     const { logs } = this.props;
     return (
       <div className="pane">
-        <LogViewer logs={logs} />
+        <TabsContainer/>
+        <List>
+          {logs.map(value => (
+            <ListItem
+              key={value.eventId}
+              role={undefined}
+              dense
+              button
+            >
+              <ListItemText primary={value.message} />
+            </ListItem>
+          ))}
+        </List>
       </div>
     );
   }
 }
+
+
+export default LogView;

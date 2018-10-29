@@ -8,6 +8,7 @@ import styles from './Home.scss'
 
 class Home extends Component {
   render() {
+    const { activeTab } = this.props
     return (
       <div className={styles.Home}>
         <CssBaseline />
@@ -21,7 +22,8 @@ class Home extends Component {
           <SideBarContainer />
         </Drawer>
         <main className={styles.content}>
-          <LogViewContainer />
+          <span>{activeTab}</span>
+          <LogViewContainer active={activeTab} />
         </main>
       </div>
     );

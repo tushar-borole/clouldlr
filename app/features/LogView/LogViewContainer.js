@@ -10,9 +10,11 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchLogEvents: () => dispatch(fetchLogEvents())
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { active }  = ownProps
+  return {
+  fetchLogEvents: () => dispatch(fetchLogEvents(active))
+}};
 
 export default connect(
   mapStateToProps,
