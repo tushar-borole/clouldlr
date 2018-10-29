@@ -3,9 +3,11 @@ import { handleActions } from 'redux-actions';
 import {
   RECEIVE_LOG_GROUPS,
   RECEIVE_LOG_GROUPS_FAIL,
-  REQUEST_LOG_GROUPS
+  REQUEST_LOG_GROUPS,
+  SELECTED_LOG_GROUPS
 } from './SideBarConstant';
 
+const initialState= {selected_logs:[]}
 const sideBarReducer = handleActions(
   {
     [RECEIVE_LOG_GROUPS]: (state, action) => ({
@@ -20,9 +22,13 @@ const sideBarReducer = handleActions(
     [REQUEST_LOG_GROUPS]: (state, action) => ({
       ...state,
       isLoading: false
+    }),
+    [SELECTED_LOG_GROUPS]: (state, action) => ({
+      ...state,
+      selected_logs:[...state.selected_logs,action.payload]
     })
   },
-  {}
+  initialState
 );
 
 export default sideBarReducer;

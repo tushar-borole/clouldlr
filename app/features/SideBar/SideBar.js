@@ -14,7 +14,8 @@ class SideBar extends Component {
   }
 
   addToTabs = (logGroupName) => {
-    console.log(logGroupName)
+    const { selectLogGroup } = this.props
+    selectLogGroup(logGroupName)
   }
 
   render() {
@@ -41,7 +42,8 @@ class SideBar extends Component {
 
 SideBar.propTypes = {
   fetchLogGroups: PropTypes.func.isRequired,
-  logs: PropTypes.array.isRequired
+  logs: PropTypes.array.isRequired,
+  selectLogGroup: PropTypes.func.isRequired
 };
 
 export default SideBar;

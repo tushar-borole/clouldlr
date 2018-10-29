@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SideBar from './SideBar';
-import { fetchLogGroups } from './SideBarAction';
+import { fetchLogGroups, selectLogGroup } from './SideBarAction';
 import { selectLogGroups } from './SideBarSelector';
 
 function mapStateToProps(state) {
@@ -11,7 +11,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchLogGroups: () => dispatch(fetchLogGroups())
+  fetchLogGroups: () => dispatch(fetchLogGroups()),
+  selectLogGroup: (logGroup) => dispatch(selectLogGroup(logGroup))
 });
 
 export default connect(

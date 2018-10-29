@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import TabsBar from './TabsBar';
+import { selectedLogGroups} from './TabsBarSelector'
 
 function mapStateToProps(state) {
-  const logs ="test";
   return {
-    logs
+    selectedLogGroups:selectedLogGroups(state)
   };
 }
 
