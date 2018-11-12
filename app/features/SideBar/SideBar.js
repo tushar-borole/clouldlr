@@ -14,8 +14,9 @@ class SideBar extends Component {
   }
 
   addToTabs = (logGroupName) => {
-    const { selectLogGroup } = this.props
+    const { selectLogGroup, selectTab } = this.props
     selectLogGroup(logGroupName)
+    selectTab(logGroupName)
   }
 
   render() {

@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
 import TabsBar from './TabsBar';
-import { selectedLogGroups} from './TabsBarSelector'
+import { selectedLogGroups, getActiveTab} from './TabsBarSelector'
 import { selectTab } from './TabsBarAction';
+import { fetchLogEvents } from '../LogView/LogViewAction';
 
 function mapStateToProps(state) {
   return {
-    selectedLogGroups:selectedLogGroups(state)
+    selectedLogGroups:selectedLogGroups(state),
+    activeTab:getActiveTab(state)
   };
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  selectTab: (tab) => dispatch(selectTab(tab))
-});
+const mapDispatchToProps  = (dispatch, ownProps) => ({
+  selectTab: (tab) => dispatch(selectTab(tab)),
+  fetchLogEvents: (active) => dispatch(fetchLogEvents(active))
+  });
 
 
 

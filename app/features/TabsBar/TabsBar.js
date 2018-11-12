@@ -6,26 +6,19 @@ import PropTypes from 'prop-types';
 import styles from './TabsBar.scss'
 
 class TabsBar extends Component {
-  state = {
-    value: 0,
-  };
-
   handleChange = (event, value) => {
-    const { selectTab , selectedLogGroups  } = this.props
-    selectTab(selectedLogGroups[value])
-    this.setState({ value });
+    const { selectTab , selectedLogGroups ,fetchLogEvents } = this.props
+    selectTab(value)
   };
 
   render() {
-    const { value } = this.state;
-    const { selectedLogGroups  } = this.props
-    console.log(selectedLogGroups)
+    const { selectedLogGroups, activeTab  } = this.props
     return (
       <div className={styles.TabsBar}>
         <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange}>
+          <Tabs value={activeTab} onChange={this.handleChange}>
             {selectedLogGroups.map(data => (
-            <Tab key={data} label={ data } />
+            <Tab key={data} value={data} label={ data } />
             ))}
           </Tabs>
         </AppBar>
@@ -36,7 +29,8 @@ class TabsBar extends Component {
 
 TabsBar.propTypes = {
   selectedLogGroups: PropTypes.array.isRequired,
-  selectTab: PropTypes.func.isRequired
+  selectTab: PropTypes.func.isRequired,
+  active_tab: PropTypes.s
 };
 
 export default TabsBar;

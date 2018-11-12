@@ -22,7 +22,6 @@ class Home extends Component {
           <SideBarContainer />
         </Drawer>
         <main className={styles.content}>
-          <span>{activeTab}</span>
           <LogViewContainer active={activeTab} />
         </main>
       </div>

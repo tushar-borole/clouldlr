@@ -7,15 +7,20 @@ import TabsContainer from '../TabsBar/TabsBarContainer';
 
 
 class LogView extends Component {
-  componentWillMount() {
+  componentWillMount= () => {
     const { fetchLogEvents } = this.props;
     fetchLogEvents();
   }
 
-  componentDidUpdate() {
-    const { fetchLogEvents } = this.props;
-    // fetchLogEvents()
+  componentDidUpdate = (prevProps) => {
+    const { fetchLogEvents, active } = this.props;
+   if(prevProps.active !== active) {
+     console.log("props changes")
+     fetchLogEvents()
+   }
+
   }
+
 
   render() {
     const { logs } = this.props;
