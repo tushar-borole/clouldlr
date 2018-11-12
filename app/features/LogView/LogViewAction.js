@@ -16,8 +16,7 @@ export const requestLogEvents = createAction(REQUEST_LOG_EVENTS);
 export const receiveLogEvents = createAction(RECEIVE_LOG_EVENTS);
 export const receiveLogEventsFail = createAction(RECEIVE_LOG_EVENTS_FAIL);
 
-export const fetchLogEvents = (active) => (dispatch, getState) => {
-  console.log("in fetch event")
+export const fetchLogEvents = active => dispatch => {
   dispatch(requestLogEvents());
   const params = {
     logGroupName: active /* required */,
@@ -32,10 +31,9 @@ export const fetchLogEvents = (active) => (dispatch, getState) => {
       accessKeyId: data.accessKey
     });
     const cloudwatchlogs = new AWS.CloudWatchLogs();
-    cloudwatchlogs.filterLogEvents(params, (err, data) => {
+    cloudwatchlogs.filterLogEvents(params, err => {
       if (err) dispatch(receiveLogEventsFail());
       else dispatch(receiveLogEvents(data)); // successful response
     });
   });
-
 };

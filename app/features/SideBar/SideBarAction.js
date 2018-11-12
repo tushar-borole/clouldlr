@@ -18,7 +18,7 @@ export const receiveLogGroups = createAction(RECEIVE_LOG_GROUPS);
 export const receiveLogGroupsFail = createAction(RECEIVE_LOG_GROUPS_FAIL);
 export const selectLogGroup = createAction(SELECTED_LOG_GROUPS);
 
-export const fetchLogGroups = () => (dispatch, getState) => {
+export const fetchLogGroups = () => dispatch => {
   dispatch(requestLogGroups());
   storage.get('credentials', (error, data) => {
     if (error) throw error;
@@ -28,11 +28,10 @@ export const fetchLogGroups = () => (dispatch, getState) => {
       accessKeyId: data.accessKey
     });
     const cloudwatchlogs = new AWS.CloudWatchLogs();
-    cloudwatchlogs.describeLogGroups({}, (err, data) => {
+    cloudwatchlogs.describeLogGroups({}, err => {
       if (err) dispatch(receiveLogGroupsFail());
       // an error occurred
       else dispatch(receiveLogGroups(data)); // successful response
     });
   });
-
 };

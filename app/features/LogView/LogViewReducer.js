@@ -13,11 +13,11 @@ const logViewReducer = handleActions(
       isLoading: false,
       logs: action.payload.events
     }),
-    [RECEIVE_LOG_EVENTS_FAIL]: (state, action) => ({
+    [RECEIVE_LOG_EVENTS_FAIL]: state => ({
       ...state,
       isLoading: false
     }),
-    [REQUEST_LOG_EVENTS]: (state, action) => ({
+    [REQUEST_LOG_EVENTS]: state => ({
       ...state,
       isLoading: false
     })

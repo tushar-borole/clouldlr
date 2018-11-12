@@ -3548,7 +3548,7 @@ dns-txt@^2.0.2:
 
 doctrine@1.5.0:
   version "1.5.0"
-  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
+  resolved "http://registry.npmjs.org/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
   dependencies:
     esutils "^2.0.2"
     isarray "^1.0.0"
@@ -4101,8 +4101,8 @@ eslint-plugin-flowtype@^2.50.0:
     lodash "^4.17.10"
 
 eslint-plugin-import@^2.13.0:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.13.0.tgz#df24f241175e312d91662dc91ca84064caec14ed"
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.14.0.tgz#6b17626d2e3e6ad52cfce8807a845d15e22111a8"
   dependencies:
     contains-path "^0.1.0"
     debug "^2.6.8"
@@ -6893,7 +6893,7 @@ load-json-file@^1.0.0:
 
 load-json-file@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"
+  resolved "http://registry.npmjs.org/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"
   dependencies:
     graceful-fs "^4.1.2"
     parse-json "^2.2.0"

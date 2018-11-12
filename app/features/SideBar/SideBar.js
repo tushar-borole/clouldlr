@@ -5,19 +5,19 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types';
-import styles from './SideBar.scss'
+import styles from './SideBar.scss';
 
 class SideBar extends Component {
   componentWillMount = () => {
     const { fetchLogGroups } = this.props;
     fetchLogGroups();
-  }
+  };
 
-  addToTabs = (logGroupName) => {
-    const { selectLogGroup, selectTab } = this.props
-    selectLogGroup(logGroupName)
-    selectTab(logGroupName)
-  }
+  addToTabs = logGroupName => {
+    const { selectLogGroup, selectTab } = this.props;
+    selectLogGroup(logGroupName);
+    selectTab(logGroupName);
+  };
 
   render() {
     const { logs } = this.props;
@@ -30,7 +30,7 @@ class SideBar extends Component {
               role={undefined}
               dense
               button
-              onClick={this.addToTabs.bind(this,value.logGroupName)}
+              onClick={this.addToTabs.bind(this, value.logGroupName)}
             >
               <ListItemText primary={value.logGroupName} />
             </ListItem>
@@ -44,7 +44,8 @@ class SideBar extends Component {
 SideBar.propTypes = {
   fetchLogGroups: PropTypes.func.isRequired,
   logs: PropTypes.array.isRequired,
-  selectLogGroup: PropTypes.func.isRequired
+  selectLogGroup: PropTypes.func.isRequired,
+  selectTab: PropTypes.func.isRequired
 };
 
 export default SideBar;
