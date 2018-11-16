@@ -23,15 +23,15 @@ export const fetchLogGroups = () => dispatch => {
   storage.get('credentials', (error, data) => {
     if (error) throw error;
     AWS.config.update({
-      region: 'us-east-1',
+      region: data.region,
       secretAccessKey: data.secretkey,
       accessKeyId: data.accessKey
     });
     const cloudwatchlogs = new AWS.CloudWatchLogs();
-    cloudwatchlogs.describeLogGroups({}, err => {
+    cloudwatchlogs.describeLogGroups({}, (err, logs) => {
       if (err) dispatch(receiveLogGroupsFail());
       // an error occurred
-      else dispatch(receiveLogGroups(data)); // successful response
+      else dispatch(receiveLogGroups(logs)); // successful response
     });
   });
 };

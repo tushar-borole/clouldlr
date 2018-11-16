@@ -8,7 +8,10 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
+import { NotificationContainer } from 'react-notifications';
 import Typography from '@material-ui/core/Typography';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { history } from '../../store/configureStore';
 
@@ -51,20 +54,27 @@ const styles = theme => ({
 });
 
 class SignIn extends Component {
-  componentDidMount() {
-    storage.get('credentials', error => {
-      if (error) throw error;
+  state = {
+    region: ''
+  };
 
-      history.push('/home');
-    });
+  componentDidMount() {
+    // NotificationManager.info('Info message','ASDASD',200000);
   }
 
-  saveCrendentials() {
-    console.log(this.props);
+  handleChange = event => {
+    this.setState({ region: event.target.value });
+  };
 
+  saveCrendentials() {
+    const { region } = this.state;
     storage.set(
       'credentials',
-      { accessKey: this.accesskey.value, secretkey: this.secretkey.value },
+      {
+        accessKey: this.accesskey.value,
+        secretkey: this.secretkey.value,
+        region
+      },
       error => {
         if (error) throw error;
         history.push('/home');
@@ -74,9 +84,30 @@ class SignIn extends Component {
 
   render() {
     const { classes } = this.props;
+    const { region } = this.state;
+    const regions = [
+      'us-west-2',
+      'us-west-1',
+      'us-east-2',
+      'us-east-1',
+      'ap-south-1',
+      'ap-northeast-2',
+      'ap-southeast-1',
+      'ap-southeast-2',
+      'ap-northeast-1',
+      'ca-central-1',
+      'cn-north-1',
+      'eu-central-1',
+      'eu-west-1',
+      'eu-west-2',
+      'eu-west-3',
+      'sa-east-1',
+      'us-gov-west-1'
+    ];
     return (
       <React.Fragment>
         <CssBaseline />
+        <NotificationContainer />
         <main className={classes.layout}>
           <Paper className={classes.paper}>
             <Avatar className={classes.avatar}>
@@ -86,6 +117,25 @@ class SignIn extends Component {
               Sign in
             </Typography>
             <form className={classes.form}>
+              <FormControl required fullWidth>
+                <InputLabel htmlFor="region">Region</InputLabel>
+                <Select
+                  id="region"
+                  name="region"
+                  onChange={this.handleChange}
+                  value={region}
+                  inputRef={e => {
+                    this.region = e;
+                  }}
+                >
+                  {regions.map(value => (
+                    <MenuItem key={value} value={value}>
+                      {value}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="accesskey">Access Key</InputLabel>
                 <Input

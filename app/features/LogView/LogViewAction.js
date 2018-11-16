@@ -24,16 +24,18 @@ export const fetchLogEvents = active => dispatch => {
     limit: 50
   };
   storage.get('credentials', (error, data) => {
+    console.log(data);
     if (error) throw error;
     AWS.config.update({
-      region: 'us-east-1',
+      region: data.region,
       secretAccessKey: data.secretkey,
       accessKeyId: data.accessKey
     });
     const cloudwatchlogs = new AWS.CloudWatchLogs();
-    cloudwatchlogs.filterLogEvents(params, err => {
+    cloudwatchlogs.filterLogEvents(params, (err, logs) => {
+      console.log(err);
       if (err) dispatch(receiveLogEventsFail());
-      else dispatch(receiveLogEvents(data)); // successful response
+      else dispatch(receiveLogEvents(logs)); // successful response
     });
   });
 };
