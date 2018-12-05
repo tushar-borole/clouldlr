@@ -1,6 +1,6 @@
-<p align="center">
-**IDE for cloudwatch logs**
-</p>
+
+## IDE for cloudwatch logs
+
 
 ![Signin](./clouldr1.png)
 <br>
